@@ -12,11 +12,11 @@
         <description/>
         <display-name>UserController</display-name>
         <servlet-name>UserController</servlet-name>
-        <servlet-class>com.daniel.controller.UserController</servlet-class>
+        <servlet-class>controller.UserController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ClienteController</servlet-name>
-        <servlet-class>com.daniel.controller.ClienteController</servlet-class>
+        <servlet-class>controller.ClienteController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserController</servlet-name>
