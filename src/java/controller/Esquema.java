@@ -5,8 +5,13 @@
  */
 package controller;
 
+import dao.EsquemaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,22 +32,6 @@ public class Esquema extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Esquema</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Esquema at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -56,7 +45,19 @@ public class Esquema extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String forward="";
+        String action=request.getParameter("action");
+        if(action.equals("listEsquema")){
+            EsquemaDAO e=new EsquemaDAO();
+            forward = "/esquema.jsp";
+            try {
+                request.setAttribute("esquemas", e.getAllEsquemas());
+            } catch (SQLException ex) {
+                Logger.getLogger(Esquema.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        RequestDispatcher view = request.getRequestDispatcher(forward);
+        view.forward(request, response);
     }
 
     /**
@@ -70,7 +71,7 @@ public class Esquema extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+       
     }
 
     /**

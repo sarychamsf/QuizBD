@@ -37,7 +37,7 @@ http://www.templatemo.com/tm-484-ocean
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <div class="tm-wrapper-center">
                             <h1 class="tm-section-intro-title">Bienvenido</h1>
-                            <a href="esquema.jsp" class="tm-btn-white-big">Continuar</a>
+                            <a href="/Esquema?action=listEsquema" class="tm-btn-white-big">Continuar</a>
                         </div>            
                     </div>
                 </section>    

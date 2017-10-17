@@ -37,7 +37,7 @@ public class EsquemaDAO {
         preparedStatement.executeUpdate();
     }
 
-    public List<Esquema> getAllTables() throws SQLException {
+    public List<Esquema> getAllEsquemas() throws SQLException {
         List<Esquema> esquemas = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from esquema");
