@@ -2,16 +2,40 @@
 <web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>SimpleJspServletDB</display-name>
     <servlet>
-        <servlet-name>Esquema</servlet-name>
-        <servlet-class>controller.Esquema</servlet-class>
+        <servlet-name>SchemaSer</servlet-name>
+        <servlet-class>controller.SchemaSer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ColumnaSer</servlet-name>
+        <servlet-class>controller.ColumnaSer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TablaSer</servlet-name>
+        <servlet-class>controller.TablaSer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VisualizarSer</servlet-name>
+        <servlet-class>controller.VisualizarSer</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
         <url-pattern>/ClienteController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Esquema</servlet-name>
-        <url-pattern>/Esquema</url-pattern>
+        <servlet-name>SchemaSer</servlet-name>
+        <url-pattern>/SchemaSer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ColumnaSer</servlet-name>
+        <url-pattern>/ColumnaSer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TablaSer</servlet-name>
+        <url-pattern>/TablaSer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VisualizarSer</servlet-name>
+        <url-pattern>/VisualizarSer</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

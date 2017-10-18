@@ -5,6 +5,15 @@ public class Tabla {
     private int id_tabla;
     private String nombre_tabla;
     private int id_esquema;
+    
+    public Tabla () {
+        
+    }
+    
+    public Tabla (String nombre_tabla, int id_esquema) {
+        this.nombre_tabla = nombre_tabla;
+        this.id_esquema = id_esquema;
+    }
 
     public int getId_tabla() {
         return id_tabla;
