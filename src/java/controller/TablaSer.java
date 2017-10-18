@@ -20,17 +20,41 @@ public class TablaSer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         String action = request.getParameter("action");
         EsquemaDAO ed = new EsquemaDAO();
         ArrayList<Esquema> respuesta = new ArrayList<>();
-        try {
-            respuesta = ed.getAllEsquemas();
-        } catch (SQLException ex) {
-            Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
+        if (action.equals("modificar")) {
+            try {
+                respuesta = ed.getAllEsquemas();
+            } catch (SQLException ex) {
+                Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/modificar_tabla.jsp");
+            request.setAttribute("respuesta", respuesta);
+            rd.forward(request, response);
         }
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/agregar_tabla.jsp");
-        request.setAttribute("respuesta", respuesta);
-        rd.forward(request, response);
+        if (action.equals("eliminar")) {
+            try {
+                respuesta = ed.getAllEsquemas();
+            } catch (SQLException ex) {
+                Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/eliminar_tabla.jsp");
+            request.setAttribute("respuesta", respuesta);
+            rd.forward(request, response);
+        }
+        if (action.equals("listar")) {
+            try {
+                respuesta = ed.getAllEsquemas();
+            } catch (SQLException ex) {
+                Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/agregar_tabla.jsp");
+            request.setAttribute("respuesta", respuesta);
+            rd.forward(request, response);
+        }
+
     }
 
     @Override

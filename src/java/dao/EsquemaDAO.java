@@ -31,9 +31,11 @@ public class EsquemaDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateEsquema(Esquema esquema) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update esquema set nombre_esquema=?" + "where id_esquema=?");
-        preparedStatement.setString(1, esquema.getNombre_esquema());
+    public void updateEsquema(String esquema,int idE) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update esquema set nombre_esquema=?" + " where id_esquema=?");
+        preparedStatement.setString(1, esquema);
+        preparedStatement.setInt(2, idE);
+        
         preparedStatement.executeUpdate();
     }
 
