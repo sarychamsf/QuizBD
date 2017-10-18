@@ -1,3 +1,5 @@
+<%@page import="model.Esquema"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
@@ -43,13 +45,27 @@
                 </div>
 
 
-                <form align="center" action="TablaSer" method="POST" class="tm-contact-form">                                
+                <form align="center" action="TablaSer" method="post" class="tm-contact-form">                                
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
                         <label for="nombre_tabla">Nombre de la Tabla</label>
-                        <input type="text" id="nombre_esquema" name="nombre_esquema" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
+                        <input type="text" id="nombre_tabla" name="nombre_tabla" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
                         <br>
-                        <label for="id_esquema">Id del Esquema</label>
-                        <input type="number" id="id_esquema" name="id_esquema" maxlength="3" class="form-control" placeholder="máx. 3"  required/>
+                        <label for="id_esquema">Esquema</label>
+
+                        <select name="id_esquema" class="form-control form-control-lg">
+                            <%
+                                if (request.getAttribute("respuesta") != null) {
+                                    ArrayList<Esquema> array = (ArrayList<Esquema>) request.getAttribute("respuesta");
+                                    System.out.println(array.toString());
+                                    for (Esquema esquema : array) {     
+                            %>
+                            <option value="<%=esquema.getId_esquema()%>"><%=esquema.getNombre_esquema()%></option>
+                            <%      }
+                                }
+                            %>
+                        </select>
+
+
                         <br><br>
                         <button type="submit" class="btn tm-bordered-btn pull-xs-right">Crear</button> 
                     </div>                         
@@ -57,6 +73,7 @@
 
             </section>
 
+                            
         </div>
 
     </div>

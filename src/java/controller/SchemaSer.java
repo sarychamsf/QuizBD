@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import dao.EsquemaDAO;
@@ -17,17 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Esquema;
 
-/**
- *
- * @author Sary
- */
 public class SchemaSer extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getRequestDispatcher("agregar_esquema.jsp").forward(request, response);
 
     }
 
@@ -39,13 +28,14 @@ public class SchemaSer extends HttpServlet {
         String nombre_esquema = request.getParameter("nombre_esquema");
 
         Esquema esquema = new Esquema(nombre_esquema);
+        
         try {
             esquema_dao.addEsquema(esquema);
         } catch (SQLException ex) {
             Logger.getLogger(SchemaSer.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        response.sendRedirect("SchemaSer");
+        response.sendRedirect("menu.html");
 
     }
 
