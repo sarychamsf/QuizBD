@@ -22,11 +22,13 @@ public class TablaSer extends HttpServlet {
             throws ServletException, IOException {
 
         String action = request.getParameter("action");
+        TablaDAO td = new TablaDAO();
+        ArrayList<Tabla> respuesta = new ArrayList<>();
         EsquemaDAO ed = new EsquemaDAO();
-        ArrayList<Esquema> respuesta = new ArrayList<>();
+        ArrayList<Esquema> respuesta2 = new ArrayList<>();
         if (action.equals("modificar")) {
             try {
-                respuesta = ed.getAllEsquemas();
+                respuesta = td.getAllTables();
             } catch (SQLException ex) {
                 Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -36,7 +38,7 @@ public class TablaSer extends HttpServlet {
         }
         if (action.equals("eliminar")) {
             try {
-                respuesta = ed.getAllEsquemas();
+                respuesta = td.getAllTables();
             } catch (SQLException ex) {
                 Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -46,12 +48,12 @@ public class TablaSer extends HttpServlet {
         }
         if (action.equals("listar")) {
             try {
-                respuesta = ed.getAllEsquemas();
+                respuesta2 = ed.getAllEsquemas();
             } catch (SQLException ex) {
                 Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
             }
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/agregar_tabla.jsp");
-            request.setAttribute("respuesta", respuesta);
+            request.setAttribute("respuesta", respuesta2);
             rd.forward(request, response);
         }
 
@@ -63,8 +65,6 @@ public class TablaSer extends HttpServlet {
 
         TablaDAO tabla_dao = new TablaDAO();
         String nombre_tabla = request.getParameter("nombre_tabla");
-        System.out.println(nombre_tabla);
-        System.out.println(request.getParameter("id_esquema"));
         int id_esquema = Integer.parseInt(request.getParameter("id_esquema"));
 
         Tabla tabla = new Tabla(nombre_tabla, id_esquema);

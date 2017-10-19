@@ -21,6 +21,10 @@
         <servlet-name>SchemaSerM</servlet-name>
         <servlet-class>controller.SchemaSerM</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TablaSerM</servlet-name>
+        <servlet-class>controller.TablaSerM</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteController</servlet-name>
         <url-pattern>/ClienteController</url-pattern>
@@ -44,6 +48,10 @@
     <servlet-mapping>
         <servlet-name>SchemaSerM</servlet-name>
         <url-pattern>/SchemaSerM</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TablaSerM</servlet-name>
+        <url-pattern>/TablaSerM</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

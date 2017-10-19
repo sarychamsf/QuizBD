@@ -55,7 +55,7 @@
                             <%
                                 if (request.getAttribute("respuesta") != null) {
                                     ArrayList<Esquema> array = (ArrayList<Esquema>) request.getAttribute("respuesta");
-                                    System.out.println(array.toString());
+
                                     for (Esquema esquema : array) {     
                             %>
                             <option value="<%=esquema.getId_esquema()%>"><%=esquema.getNombre_esquema()%></option>

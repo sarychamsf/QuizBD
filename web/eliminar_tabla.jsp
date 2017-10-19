@@ -1,4 +1,4 @@
-<%@page import="model.Esquema"%>
+<%@page import="model.Tabla"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,29 +40,30 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
 
-                    <h2 class="tm-section-title">Eliminar Esquema</h2>
+                    <h2 class="tm-section-title">Eliminar Tabla</h2>
                     <br><br>
 
                 </div>
 
-                <form align="center" action="SchemaSerM" method="GET" class="tm-contact-form">                                
+                <form align="center" action="TablaSerM" method="GET" class="tm-contact-form">                                
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
-                        <label for="id_esquema">Esquema</label>
+                        <label for="id_tabla">Tabla</label>
 
-                        <select name="id_esquema" class="form-control form-control-lg">
+                        <select name="id_tabla" class="form-control form-control-lg">
                             <%
                                 if (request.getAttribute("respuesta") != null) {
-                                    ArrayList<Esquema> array = (ArrayList<Esquema>) request.getAttribute("respuesta");
-                                    for (Esquema esquema : array) {     
+                                    ArrayList<Tabla> array = (ArrayList<Tabla>) request.getAttribute("respuesta");
+                                    for (Tabla tablas : array) {     
                             %>
-                            <option value="<%=esquema.getId_esquema()%>"><%=esquema.getNombre_esquema()%></option>
+                            <option value="<%=tablas.getId_tabla()%>"><%=tablas.getNombre_tabla()%></option>
                             <%      }
                                 }
                             %>
                         </select>
                         
                         <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Eliminar</button> 
+                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Modificar</button> 
+                        
                     </div>                         
                 </form>   
 

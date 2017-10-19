@@ -31,15 +31,15 @@ public class TablaDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateTabla(Tabla tabla) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update tabla set nombre_tabla=?, id_esquema=?" + "where id_tabla=?");
-        preparedStatement.setString(1, tabla.getNombre_tabla());
-        preparedStatement.setInt(2, tabla.getId_esquema());
+    public void updateTabla(String nombreT,int idT) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update tabla set nombre_tabla=?" + "where id_tabla=?");
+        preparedStatement.setString(1, nombreT);
+        preparedStatement.setInt(2, idT);
         preparedStatement.executeUpdate();
     }
 
-    public List<Tabla> getAllTables() throws SQLException {
-        List<Tabla> tablas = new ArrayList<>();
+    public ArrayList<Tabla> getAllTables() throws SQLException {
+        ArrayList<Tabla> tablas = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from tabla");
         while (rs.next()) {
