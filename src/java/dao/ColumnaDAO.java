@@ -32,16 +32,17 @@ public class ColumnaDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateColumna(Columna columna) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update columna set nombre_columna=?, data_type=?, id_tabla=?" + "where id_columna=?");
-        preparedStatement.setString(1, columna.getNombre_columna());
-        preparedStatement.setString(2, columna.getData_type());
-        preparedStatement.setInt(3, columna.getId_tabla());
+    public void updateColumna(String nombre,String tipo,int id) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update columna set nombre_columna=?, data_type=?" + "where id_columna=?");
+        preparedStatement.setString(1, nombre);
+        preparedStatement.setString(2, tipo);
+        preparedStatement.setInt(3, id);
         preparedStatement.executeUpdate();
     }
+    
 
-    public List<Columna> getAllColumna() throws SQLException {
-        List<Columna> columnas = new ArrayList<>();
+    public ArrayList<Columna> getAllColumna() throws SQLException {
+        ArrayList<Columna> columnas = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from columna");
         while (rs.next()) {

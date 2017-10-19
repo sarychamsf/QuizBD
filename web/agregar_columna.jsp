@@ -1,3 +1,5 @@
+<%@page import="model.Tabla"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
@@ -51,8 +53,20 @@
                         <label for="data_type">Tipo de Dato</label>
                         <input type="text" id="data_type" name="data_type" class="form-control" maxlength="30" placeholder="máx. 30"  required/>
                         <br>
-                        <label for="id_tabla">Id Tabla</label>
-                        <input type="number" id="id_tabla" name="id_tabla" maxlength="3" class="form-control" placeholder="máx. 3"  required/>
+                        <label for="id_esquema">Tabla</label>
+
+                        <select name="id_tabla" class="form-control form-control-lg">
+                            <%
+                                if (request.getAttribute("respuesta") != null) {
+                                    ArrayList<Tabla> array = (ArrayList<Tabla>) request.getAttribute("respuesta");
+                                    System.out.println(array.toString());
+                                    for (Tabla tabla : array) {     
+                            %>
+                            <option value="<%=tabla.getId_tabla()%>"><%=tabla.getNombre_tabla()%></option>
+                            <%      }
+                                }
+                            %>
+                        </select>
                         <br><br>
                         <button type="submit" class="btn tm-bordered-btn pull-xs-right">Crear</button> 
                     </div>                         

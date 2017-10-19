@@ -26,6 +26,14 @@ public class EsquemaDAO {
     }
 
     public void deleteEsquema(int id_esquema) throws SQLException {
+        
+        PreparedStatement rs = connection.prepareStatement("select * from tabla where id_esquema=?");
+        rs.setInt(1, id_esquema);
+        ResultSet rt=rs.executeQuery();
+        TablaDAO cd=new TablaDAO();
+        while (rt.next()) {
+            cd.deleteTabla(rt.getInt("id_tabla"));
+        }
         PreparedStatement preparedStatement = connection.prepareStatement("delete from esquema where id_esquema=?");
         preparedStatement.setInt(1, id_esquema);
         preparedStatement.executeUpdate();
