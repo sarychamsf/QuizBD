@@ -46,7 +46,7 @@ public class TablaSer extends HttpServlet {
             request.setAttribute("respuesta", respuesta);
             rd.forward(request, response);
         }
-        if (action.equals("listar")) {
+        if (action.equals("agregar")) {
             try {
                 respuesta2 = ed.getAllEsquemas();
             } catch (SQLException ex) {
@@ -54,6 +54,16 @@ public class TablaSer extends HttpServlet {
             }
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/agregar_tabla.jsp");
             request.setAttribute("respuesta", respuesta2);
+            rd.forward(request, response);
+        }
+        if (action.equals("listar")) {
+            try {
+                respuesta = td.getAllTables();
+            } catch (SQLException ex) {
+                Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/listar_tabla.jsp");
+            request.setAttribute("respuesta", respuesta);
             rd.forward(request, response);
         }
 

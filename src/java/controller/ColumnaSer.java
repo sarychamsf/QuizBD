@@ -20,7 +20,7 @@ public class ColumnaSer extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String action = request.getParameter("action");
         TablaDAO td = new TablaDAO();
         ArrayList<Tabla> respuesta = new ArrayList<>();
@@ -47,6 +47,16 @@ public class ColumnaSer extends HttpServlet {
             rd.forward(request, response);
         }
         if (action.equals("listar")) {
+            try {
+                respuesta2 = cd.getAllColumna();
+            } catch (SQLException ex) {
+                Logger.getLogger(TablaSer.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/listar_columna.jsp");
+            request.setAttribute("respuesta", respuesta2);
+            rd.forward(request, response);
+        }
+        if (action.equals("agregar")) {
             try {
                 respuesta = td.getAllTables();
             } catch (SQLException ex) {

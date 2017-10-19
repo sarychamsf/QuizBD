@@ -1,5 +1,6 @@
-<%@page import="model.Esquema"%>
+<%@page import="model.Tabla"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.Esquema"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Modificar Esquema</title>
+        <title>Listar Tablas</title>
         <!--
         Ocean Theme
         http://www.templatemo.com/tm-484-ocean
@@ -34,49 +35,54 @@
 
     <body>
 
-        <div class="row tm-section">
+        <!-- About -->
+        <div class="row tm-section tm-blue-bg-row">
 
-            <section class="tm-section-contact">
+            <section>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
-
-                    <h2 class="tm-section-title">Modificar Esquema</h2>
-                    <br><br>
-
+                    <h2 class="tm-section-title">Lista de Tablas</h2>
+                    <br>
                 </div>
 
-                <form align="center" action="SchemaSerM" method="POST" class="tm-contact-form">                                
-                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
-                        <label for="nombre_esquema">Nombre del Esquema</label>
-                        <input type="text" id="nombre_esquema" name="nombre_esquema" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
-                        <label for="id_esquema">Esquema</label>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                        <select name="id_esquema" class="form-control form-control-lg">
-                            <%
-                                if (request.getAttribute("respuesta") != null) {
-                                    ArrayList<Esquema> array = (ArrayList<Esquema>) request.getAttribute("respuesta");
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id Tabla </th>
+                                <th>Nombre Tabla</th>
+                                <th>Id Esquema</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                                    for (Esquema esquema : array) {     
+                            <%if (request.getAttribute("respuesta") != null) {
+
+                                    ArrayList<Tabla> array = (ArrayList<Tabla>) request.getAttribute("respuesta");
+
+                                    for (Tabla tabla : array) {
+
                             %>
-                            <option value="<%=esquema.getId_esquema()%>"><%=esquema.getNombre_esquema()%></option>
+
+                            <tr>
+                                <th scope="row"><%=tabla.getId_tabla()%></th>
+                                <td><%=tabla.getNombre_tabla()%></td>
+                                <td><%=tabla.getId_esquema()%></td>
+                            </tr>
+
                             <%      }
                                 }
                             %>
-                        </select>
-                        
-                        <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Modificar</button> 
-                        
-                    </div>                         
-                </form>   
+
+                        </tbody>
+                    </table>
+
+                </div>
 
             </section>
-            
-            
 
-        </div>
+        </div> 
 
-    </div>
-
-</body>
+    </body>
 </html>

@@ -48,7 +48,7 @@
                         <label for="nombre_esquema">Nombre del Esquema</label>
                         <input type="text" id="nombre_esquema" name="nombre_esquema" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
                         <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Crear</button> 
+                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Agregar</button> 
                     </div>                         
                 </form>   
 

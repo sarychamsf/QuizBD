@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Agregar Casdpiof</title>
+        <title>Modificar Columna</title>
         <!--
         Ocean Theme
         http://www.templatemo.com/tm-484-ocean
@@ -40,7 +40,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
 
-                    <h2 class="tm-section-title">Eliminar Columna</h2>
+                    <h2 class="tm-section-title">Modificar Columna</h2>
                     <br><br>
 
                 </div>
@@ -68,7 +68,7 @@
                         </select>
                         
                         <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Eliminar</button> 
+                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Modificar</button> 
                         
                     </div>                         
                 </form>   

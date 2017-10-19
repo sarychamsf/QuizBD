@@ -11,7 +11,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Agregar Esquema</title>
+        <title>Eliminar Esquema</title>
         <!--
         Ocean Theme
         http://www.templatemo.com/tm-484-ocean
@@ -62,7 +62,7 @@
                         </select>
                         
                         <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Modificar</button> 
+                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Eliminar</button> 
                         
                     </div>                         
                 </form>   

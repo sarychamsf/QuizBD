@@ -68,7 +68,7 @@
                             %>
                         </select>
                         <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Crear</button> 
+                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Agregar</button> 
                     </div>                         
                 </form>   
 

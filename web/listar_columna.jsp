@@ -1,3 +1,7 @@
+<%@page import="model.Columna"%>
+<%@page import="model.Tabla"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Esquema"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
@@ -9,7 +13,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Ocean Bootstrap 4.0 simple theme</title>
+        <title>Listar Columnas</title>
         <!--
         Ocean Theme
         http://www.templatemo.com/tm-484-ocean
@@ -38,7 +42,7 @@
             <section>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
-                    <h2 class="tm-section-title">Visualización</h2>
+                    <h2 class="tm-section-title">Lista de Columnas</h2>
                     <br>
                 </div>
 
@@ -47,12 +51,32 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Id Esquema </th>
-                                <th>Nombre Esquema</th>
+                                <th>Id Columna </th>
+                                <th>Nombre Columna</th>
+                                <th>Tipo de Dato</th>
+                                <th>Id Tabla</th>
                             </tr>
                         </thead>
                         <tbody>
 
+                            <%if (request.getAttribute("respuesta") != null) {
+
+                                    ArrayList<Columna> array = (ArrayList<Columna>) request.getAttribute("respuesta");
+
+                                    for (Columna columna : array) {
+
+                            %>
+
+                            <tr>
+                                <th scope="row"><%=columna.getId_columna()%></th>
+                                <td><%=columna.getNombre_columna()%></td>
+                                <td><%=columna.getData_type()%></td>
+                                <td><%=columna.getId_tabla()%></td>
+                            </tr>
+
+                            <%      }
+                                }
+                            %>
 
                         </tbody>
                     </table>
