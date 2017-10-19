@@ -69,16 +69,17 @@
                             </tr>
 
                             <%      }
-                               }
+                                }
                             %>
-                            
+
                         </tbody>
                     </table>
 
                 </div>
 
             </section>
-
+            <p align="center"><a class="btn btn-primary btn-lg" href="menu.html" role="button">Volver</a></p>
+            <br>
         </div> 
 
     </body>
