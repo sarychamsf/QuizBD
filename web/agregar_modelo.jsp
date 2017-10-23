@@ -1,5 +1,3 @@
-<%@page import="model.Columna"%>
-<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
@@ -11,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Modificar Columna</title>
+        <title>Agregar Modelo</title>
         <!--
         Ocean Theme
         http://www.templatemo.com/tm-484-ocean
@@ -40,40 +38,23 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
 
-                    <h2 class="tm-section-title">Modificar Columna</h2>
+                    <h2 class="tm-section-title">Agregar Modelo</h2>
                     <br><br>
 
                 </div>
 
-                <form align="center" action="ColumnaSerM" method="POST" class="tm-contact-form">                                
+                <form align="center" action="ModeloSer" method="POST" class="tm-contact-form">                                
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
-
-                        <label for="nombre_tabla">Nombre de la Columna</label>
-                        <input type="text" id="nombre_columna" name="nombre_columna" maxlength="30" class="form-control" placeholder="máx. 30" required/>
-
-                        <label for="nombre_tabla">Tipo de Dato</label>
-                        <input type="text" id="tipo_columna" name="tipo" maxlength="30" class="form-control" placeholder="máx. 30" required/>
-
-                        <label for="id_columna">Columna</label>
-                        <select name="id_columna" class="form-control form-control-lg">
-                            <%
-                                if (request.getAttribute("respuesta") != null) {
-                                    ArrayList<Columna> array = (ArrayList<Columna>) request.getAttribute("respuesta");
-                                    for (Columna col : array) {
-                            %>
-                            <option value="<%=col.getId_columna()%>"><%=col.getNombre_columna()%></option>
-                            <%      }
-                                }
-                            %>
-                        </select>
-
+                        <label for="nombre_esquema">Nombre del Modelo</label>
+                        <input type="text" id="nombre_modelo" name="nombre_modelo" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
                         <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Modificar</button> 
-
+                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Agregar</button> 
                     </div>                         
                 </form>   
 
             </section>
+            
+            
 
         </div>
 
@@ -81,4 +62,3 @@
 
 </body>
 </html>
-

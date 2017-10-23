@@ -1,5 +1,8 @@
+<%@page import="model.UnidadAbstracta"%>
 <%@page import="model.Columna"%>
+<%@page import="model.Tabla"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.Esquema"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!DOCTYPE html>
@@ -11,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Modificar Columna</title>
+        <title>Listar Columnas</title>
         <!--
         Ocean Theme
         http://www.templatemo.com/tm-484-ocean
@@ -34,51 +37,58 @@
 
     <body>
 
-        <div class="row tm-section">
+        <!-- About -->
+        <div class="row tm-section tm-blue-bg-row">
 
-            <section class="tm-section-contact">
+            <section>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-xs-center">
-
-                    <h2 class="tm-section-title">Modificar Columna</h2>
-                    <br><br>
-
+                    <h2 class="tm-section-title">Lista de Columnas</h2>
+                    <br>
                 </div>
 
-                <form align="center" action="ColumnaSerM" method="POST" class="tm-contact-form">                                
-                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-                        <label for="nombre_tabla">Nombre de la Columna</label>
-                        <input type="text" id="nombre_columna" name="nombre_columna" maxlength="30" class="form-control" placeholder="máx. 30" required/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id Unidad AdI </th>
+                                <th>Nombre </th>
+                                <th>Id Tabla</th>
+                                <th>Id Contexto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                        <label for="nombre_tabla">Tipo de Dato</label>
-                        <input type="text" id="tipo_columna" name="tipo" maxlength="30" class="form-control" placeholder="máx. 30" required/>
+                            <%if (request.getAttribute("respuesta") != null) {
 
-                        <label for="id_columna">Columna</label>
-                        <select name="id_columna" class="form-control form-control-lg">
-                            <%
-                                if (request.getAttribute("respuesta") != null) {
-                                    ArrayList<Columna> array = (ArrayList<Columna>) request.getAttribute("respuesta");
-                                    for (Columna col : array) {
+                                    ArrayList<UnidadAbstracta> array = (ArrayList<UnidadAbstracta>) request.getAttribute("respuesta");
+
+                                    for (UnidadAbstracta unidadAbstracta : array) {
+
                             %>
-                            <option value="<%=col.getId_columna()%>"><%=col.getNombre_columna()%></option>
+
+                            <tr>
+                                <th scope="row"><%=unidadAbstracta.getId_unidad()%></th>
+                                <td><%=unidadAbstracta.getNombre_unidad()%></td>
+                                <td><%=unidadAbstracta.getId_tabla()%></td>
+                                <td><%=unidadAbstracta.getId_contexto()%></td>
+                            </tr>
+
                             <%      }
                                 }
                             %>
-                        </select>
 
-                        <br><br>
-                        <button type="submit" class="btn tm-bordered-btn pull-xs-right">Modificar</button> 
+                        </tbody>
+                    </table>
 
-                    </div>                         
-                </form>   
+                </div>
 
             </section>
+            <p align="center"><a class="btn btn-primary btn-lg" href="menu.html" role="button">Volver</a></p>
+        </div> 
 
-        </div>
-
-    </div>
-
-</body>
+    </body>
 </html>
+
 
