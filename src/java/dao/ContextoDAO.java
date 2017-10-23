@@ -18,7 +18,7 @@ public class ContextoDAO {
     }
 
     public void addContexto(Contexto contexto) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into contexto_n(nombre_contexto, link, id_modelo) values (?, ?, ?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into contexto_n (nombre_contexto, link, id_modelo) values (?, ?, ?)");
         preparedStatement.setString(1, contexto.nombre_contexto);
         preparedStatement.setString(2, contexto.link);
         preparedStatement.setInt(3, contexto.id_modelo);
@@ -30,8 +30,8 @@ public class ContextoDAO {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * contexto_n");
         while (rs.next()) {
-            Contexto unidadAbstracta = new Contexto(rs.getString("nombre_unidad"), rs.getString("link"), rs.getInt("id_contexto"));
-            contextos.add(unidadAbstracta);
+            Contexto contexto = new Contexto(rs.getString("nombre_contexto"), rs.getString("link"), rs.getInt("id_modelo"));
+            contextos.add(contexto);
         }
         return contextos;
     }

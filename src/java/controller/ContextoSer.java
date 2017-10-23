@@ -1,11 +1,8 @@
 package controller;
 
 import dao.ContextoDAO;
-import dao.EsquemaDAO;
 import dao.ModeloDAO;
-import dao.TablaDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -20,7 +17,7 @@ import model.Modelo;
 
 public class ContextoSer extends HttpServlet {
 
-    @Override
+        @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -28,13 +25,11 @@ public class ContextoSer extends HttpServlet {
         ModeloDAO md = new ModeloDAO();
         ArrayList<Modelo> respuesta = new ArrayList<>();
         if (action.equals("agregar")) {
-
             try {
                 respuesta = md.getAllModelo();
             } catch (SQLException ex) {
-                Logger.getLogger(ContextoSer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ModeloSer.class.getName()).log(Level.SEVERE, null, ex);
             }
-
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/agregar_contexto.jsp");
             request.setAttribute("respuesta", respuesta);
             rd.forward(request, response);

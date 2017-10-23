@@ -45,9 +45,10 @@
 
                 </div>
 
-                <form align="center" action="TablaSer" method="post" class="tm-contact-form">                                
+
+                <form align="center" action="ContextoSer" method="post" class="tm-contact-form">                                
                     <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 tm-form-group-left">
-                        <label for="nombre_tabla">Nombre del Contexto</label>
+                        <label for="nombre_contexto">Nombre del Contexto</label>
                         <input type="text" id="nombre_contexto" name="nombre_contexto" maxlength="30" class="form-control" placeholder="máx. 30"  required/>
                         <br>
                         <label for="id_modelo">Modelo</label>
@@ -57,22 +58,26 @@
                                 if (request.getAttribute("respuesta") != null) {
                                     ArrayList<Modelo> array = (ArrayList<Modelo>) request.getAttribute("respuesta");
                                     System.out.println(array.toString());
-                                    for (Modelo modelo : array) {
+                                    for (Modelo modelo : array) {     
                             %>
                             <option value="<%=modelo.getId_modelo()%>"><%=modelo.getNombre_modelo()%></option>
                             <%      }
                                 }
                             %>
                         </select>
+
+
                         <br><br>
                         <button type="submit" class="btn tm-bordered-btn pull-xs-right">Agregar</button> 
                     </div>                         
-                </form> 
-                        
-            </section>  
-                        
+                </form>   
+
+            </section>
+
+                            
         </div>
-                        
+
     </div>
+
 </body>
 </html>
